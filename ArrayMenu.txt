@@ -1,0 +1,76 @@
+import java.util.Scanner;
+
+public class ArrayMenu {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] arr = new int[100];
+        int size = 0;
+        int choice;
+
+        while (true) {
+            System.out.println("\n----- MENU -----");
+            System.out.println("1. Insert Array");
+            System.out.println("2. Find Even Numbers");
+            System.out.println("3. Find Divisible Numbers");
+            System.out.println("4. Count How Many Times 20 is Present");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+            choice = sc.nextInt();
+
+            if (choice == 1) {
+                System.out.print("Enter array size: ");
+                size = sc.nextInt();
+
+                System.out.println("Enter array elements:");
+                for (int i = 0; i < size; i++) {
+                    arr[i] = sc.nextInt();
+                }
+            }
+
+            else if (choice == 2) {
+                System.out.println("Even numbers:");
+                for (int i = 0; i < size; i++) {
+                    if (arr[i] % 2 == 0) {
+                        System.out.print(arr[i] + " ");
+                    }
+                }
+                System.out.println();
+            }
+
+            else if (choice == 3) {
+                System.out.print("Enter divisor: ");
+                int d = sc.nextInt();
+
+                System.out.println("Numbers divisible by " + d + ":");
+                for (int i = 0; i < size; i++) {
+                    if (arr[i] % d == 0) {
+                        System.out.print(arr[i] + " ");
+                    }
+                }
+                System.out.println();
+            }
+
+            else if (choice == 4) {
+                int count = 0;
+                for (int i = 0; i < size; i++) {
+                    if (arr[i] == 20) {
+                        count++;
+                    }
+                }
+                System.out.println("20 is present " + count + " time(s).");
+            }
+
+            else if (choice == 5) {
+                System.out.println("Program Ended.");
+                break;
+            }
+
+            else {
+                System.out.println("Invalid Choice!");
+            }
+        }
+
+        sc.close();
+    }
+}
