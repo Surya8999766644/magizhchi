@@ -1,0 +1,18 @@
+public class Mainssss 
+{
+    public static void main(String[] args) 
+	{
+
+        SinglyLinkedList list = new SinglyLinkedList();
+
+        list.insertBeginning(30);
+        list.insertBeginning(20);
+        list.insertBeginning(10);
+
+        list.insertMiddle(25, 3);
+
+        list.insertEnd(40);
+
+        list.display();
+    }
+}
