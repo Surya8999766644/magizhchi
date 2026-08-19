@@ -1,0 +1,193 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Employee 
+{
+    int id;
+   n  String name, dept;
+    double basic;
+
+    Employee(int id, String name, String dept, double basic) 
+	{
+        this.id = id;
+        this.name = name;
+        this.dept = dept;
+        this.basic = basic;
+    }
+
+    void show() 
+	{
+        System.out.println(id + "  " + name + "  " + dept + "  " + basic);
+    }
+
+    double netSalary() 
+	{
+        double hra = basic * 20 / 100;
+        double da = basic * 10 / 100;
+        double pf = basic * 5 / 100;
+        return basic + hra + da - pf;
+    }
+}
+
+public class Payroll
+
+ {
+    public static void main(String[] args) 
+	{
+
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Employee> list = new ArrayList<>();
+
+        while (true)
+		{
+             System.out.println("\n1.Add Employee");
+              System.out.println("2.View All Employees");
+             System.out.println("3.Search Employee");
+                System.out.println("4.Update Basic Salary");
+            System.out.println("5.Calculate Net Salary");
+            System.out.println("6.Delete Employee");
+                System.out.println("7.Exit");
+            System.out.print("Enter choice: ");
+            int ch = sc.nextInt();
+
+            if (ch == 1) 
+			{
+                System.out.print("Enter ID: ");
+                int id = sc.nextInt();
+
+                boolean found = false;
+                for (Employee e : list) 
+				{
+                    if (e.id == id) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found) 
+				{
+                    System.out.println("Employee ID already exists.");
+                    continue;
+                }
+
+                sc.nextLine();
+                System.out.print("Enter Name: ");
+                String name = sc.nextLine();
+
+                System.out.print("Enter Department: ");
+                String dept = sc.nextLine();
+
+                System.out.print("Enter Basic Salary: ");
+                double basic = sc.nextDouble();
+
+                list.add(new Employee(id, name, dept, basic));
+                System.out.println("Employee added.");
+
+            } else if (ch == 2) 
+			{
+
+                if (list.size() == 0)
+				{
+                    System.out.println("No employees found.");
+                } else {
+                    System.out.println("ID  Name  Department  Basic Salary");
+                    for (Employee e : list)
+                        e.show();
+                }
+
+            } else if (ch == 3) 
+			{
+
+                System.out.print("Enter Employee ID: ");
+                int id = sc.nextInt();
+
+                boolean found = false;
+                for (Employee e : list) 
+				{
+                    if (e.id == id) 
+					{
+                        e.show();
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                    System.out.println("Employee not found.");
+
+            } else if (ch == 4) 
+			{
+
+                System.out.print("Enter Employee ID: ");
+                int id = sc.nextInt();
+
+                boolean found = false;
+                for (Employee e : list) 
+				{
+                    if (e.id == id) {
+                        System.out.print("Enter new Basic Salary: ");
+                        e.basic = sc.nextDouble();
+                        System.out.println("Salary updated.");
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                    System.out.println("Employee not found.");
+
+            } else if (ch == 5) 
+			{
+
+                System.out.print("Enter Employee ID: ");
+                int id = sc.nextInt();
+
+                boolean found = false;
+                for (Employee e : list)
+				{
+                    if (e.id == id) 
+					{
+                        System.out.println("Net Salary = " + e.netSalary());
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                    System.out.println("Employee not found.");
+
+            } else if (ch == 6) {
+
+                System.out.print("Enter Employee ID: ");
+                int id = sc.nextInt();
+
+                boolean found = false;
+                for (int i = 0; i < list.size(); i++)
+				{
+                    if (list.get(i).id == id)
+					{
+                        list.remove(i);
+                        System.out.println("Employee deleted.");
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                    System.out.println("Employee not found.");
+
+            } else if (ch == 7)
+			{
+
+                System.out.println("Program ended.");
+                break;
+
+            } else 
+			{
+                System.out.println("Invalid choice.");
+            }
+        }
+
+        sc.close();
+    }
+}
