@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Navbar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+
+        nav {
+            background: black;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+        }
+
+        a:hover {
+            color: yellow;
+        }
+
+        button {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            button {
+                display: block;
+            }
+
+            #links {
+                display: none;
+            }
+
+            #links.show {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>MyWebsite</h2>
+
+        <div id="links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <button onclick="menu()">☰</button>
+    </nav>
+
+    <script>
+        function menu() {
+            document.getElementById("links")
+            .classList.toggle("show");
+        }
+    </script>
+
+</body>
+</html>
